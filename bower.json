@@ -1,0 +1,22 @@
+{
+  "name": "jquery-ribbon-carousel",
+  "version": "1.2.2",
+  "homepage": "https://github.com/ninapavlich/jquery-ribbon-carousel",
+  "authors": [
+    "Nina Pavlich <nina@ninalp.com>"
+  ],
+  "description": "Jquery plugin for slideshow",
+  "main": "['dist/css/ribboncarousel.min.css','dist/js/ribboncarousel.jqueryplugin.js']",
+  "keywords": [
+    "jquery",
+    "slideshow"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

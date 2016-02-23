@@ -1,0 +1,25 @@
+
+$mobile_break: 768px;
+@mixin micro-clearfix(){
+  &:before,
+  &:after {
+      content: " "; /* 1 */
+      display: table; /* 2 */
+  }
+
+  &:after {
+      clear: both;
+  }
+}
+
+
+.video-modal {
+
+	position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+
+  
+}
