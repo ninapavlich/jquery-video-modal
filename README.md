@@ -12,7 +12,15 @@
 
 **Example Markup**
 
-    <video loop="" autoplay="" muted="" src="https://lesleyloraine-dev.s3.amazonaws.com/media/media/homepage.mp4" poster="https://lesleyloraine-dev.s3.amazonaws.com/media/image/homepage_poster.jpg" id="homepage-video"></video>
+    <div id="video-modal" class='video-modal'>
+        <video loop="" autoplay="" muted="" src="https://lesleyloraine-dev.s3.amazonaws.com/media/media/homepage.mp4" poster="https://lesleyloraine-dev.s3.amazonaws.com/media/image/homepage_poster.jpg" id="homepage-video"></video>
+        <div class="controls">
+            <a href="#" class='play fa fa-play'></a>
+            <a href="#" class='pause fa fa-pause'></a>
+            <a href="#" class='scrub'><span class="marker"></span></a>
+            <a href="#" class='close fa fa-close'></a>
+        </div>
+    </div>
 
 
 **Required Libraries**
@@ -23,10 +31,11 @@
 **Javascript**
 
     <script>
-        var modal_player = new VideoModal({
-            'initUI':true
+        var modal = $('#video-modal').data("videoModal");
+        $("a.open").bind("click", function(event){
+            event.preventDefault();
+            modal.open(true);
         });
-        modal_player.play($('#homepage-video'))
     </script>
     
 
