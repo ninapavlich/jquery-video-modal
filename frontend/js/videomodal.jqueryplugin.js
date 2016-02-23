@@ -54,6 +54,17 @@
         initListeners : function(){
             var parent = this;
 
+            var img_src = $(this.video).attr("poster")
+            $("<img/>").attr("src", img_src).load(function() {
+                $(parent.video).data('measured', true);
+                $(parent.video).data('image-width', this.width);
+                $(parent.video).data('image-height', this.height);
+                $(parent.video).attr('data-image-width', this.width);
+                $(parent.video).attr('data-image-height', this.height);
+                parent.render();
+                
+            });
+
             
             $(this.ui_container).find(".play").bind("click", function(event){
                 event.preventDefault();
@@ -242,6 +253,38 @@
                     $(this.ui_container).removeClass("hide");
                 } 
             }
+
+            if($(this.video).data('measured')==true){
+                this.renderFill();
+            }
+            
+        },
+        renderFill : function(){
+            var image_width = $(this.video).data('image-width');
+            var image_height = $(this.video).data('image-height');
+            var container_width = $(window).width();
+            var container_height = $(window).height();
+
+            // console.log("Fit image "+image_width+" by "+image_height+" into "+container_width+" by "+container_height)
+
+            
+
+            var dw = container_width / image_width;
+            var dh = container_height / image_height;
+            var scale = Math.max(dw, dh);
+            
+            var new_w = scale * image_width;
+            var new_h = scale * image_height;
+
+            var dx = 0.5 * (container_width - new_w);
+            var dy = 0.5 * (container_height - new_h);
+            $(this.video).width(new_w);
+            $(this.video).height(new_h);
+            $(this.video).css("margin-left", dx);
+            $(this.video).css("margin-top", dy);
+
+            // console.log("container_width: "+container_width+" new_w: "+new_w+" dx: "+dx);
+            // console.log("container_height: "+container_height+" new_h: "+new_h+" dy: "+dy);
             
         }
 
